@@ -1,6 +1,6 @@
 import React from "react";
 
-const NavPage = () => {
+const NavPage = ({ page, setPage }) => {
   return (
     <header className="d-flex justify-content-between align-items-center">
       <p>Page: {page}</p>

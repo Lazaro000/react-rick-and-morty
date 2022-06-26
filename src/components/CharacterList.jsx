@@ -30,7 +30,7 @@ const CharacterList = () => {
           {characters.map((character) => {
             return (
               <div className="col-md-4" key={character.id}>
-                <Character character={character} />;
+                <Character character={character} />
               </div>
             );
           })}
