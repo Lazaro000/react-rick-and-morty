@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Character from "./Character";
 
 const CharacterList = () => {
   const [characters, setCharacters] = useState([]);
@@ -17,12 +18,7 @@ const CharacterList = () => {
     <div>
       <h1>Rick and Morty</h1>
       {characters.map((character) => {
-        return (
-          <div key={character.id}>
-            <h2>{character.name}</h2>
-            <img src={character.image} alt={character.name} />
-          </div>
-        );
+        return <Character key={character.id} character={character} />;
       })}
     </div>
   );
