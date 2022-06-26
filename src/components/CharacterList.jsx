@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import Character from "./Character";
+import NavPage from "./NavPage";
 
 const CharacterList = () => {
   const [characters, setCharacters] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("http://rickandmortyapi.com/api/character");
-      const data = await response.json();
+      const data = await fetch(
+        `https://rickandmortyapi.com/api/character?page=${page}`
+      );
+      const { results } = await data.json();
+      setCharacters(results);
       setLoading(false);
-      setCharacters(data.results);
     }
-
     fetchData();
-  }, []);
+  }, [page]);
 
   return (
     <div className="container">
+      <NavPage page={page} setPage={setPage} />
+
       {loading ? (
         <h1>Loading...</h1>
       ) : (
@@ -31,6 +36,8 @@ const CharacterList = () => {
           })}
         </div>
       )}
+
+      <NavPage page={page} setPage={setPage} />
     </div>
   );
 };

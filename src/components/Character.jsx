@@ -9,7 +9,7 @@ const Character = ({ character }) => {
         src={character.image}
         alt={character.name}
       />
-      <p>{character.origin.name}</p>
+      <p>{`Origin: ${character.origin && character.origin.name}`}</p>
     </div>
   );
 };
