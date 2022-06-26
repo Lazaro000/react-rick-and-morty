@@ -15,11 +15,16 @@ const CharacterList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Rick and Morty</h1>
-      {characters.map((character) => {
-        return <Character key={character.id} character={character} />;
-      })}
+    <div className="container bg-danger">
+      <div className="row">
+        {characters.map((character) => {
+          return (
+            <div className="col-md-4" key={character.id}>
+              <Character character={character} />;
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
